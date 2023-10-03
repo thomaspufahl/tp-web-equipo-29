@@ -11,6 +11,7 @@ namespace ArticulosAppWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             // Desplegable items Marcas
             ddlMarcas.Items.Add("-Seleccionar una opcion-");
             ddlMarcas.Items.Add("Samsung");
@@ -27,7 +28,7 @@ namespace ArticulosAppWeb
             ddlCategorias.Items.Add("Televisores");
             ddlCategorias.Items.Add("Media");
             ddlCategorias.Items.Add("Audio");
-
+            */
         }
     }
 }
