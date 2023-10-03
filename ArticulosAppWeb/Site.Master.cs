@@ -11,6 +11,22 @@ namespace ArticulosAppWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Desplegable items Marcas
+            ddlMarcas.Items.Add("-Seleccionar una opcion-");
+            ddlMarcas.Items.Add("Samsung");
+            ddlMarcas.Items.Add("Apple");
+            ddlMarcas.Items.Add("Motorola");
+            ddlMarcas.Items.Add("Xiomi");
+            ddlMarcas.Items.Add("Sony");
+            ddlMarcas.Items.Add("Alcatel");
+            ddlMarcas.Items.Add("Huawei");
+
+            //Desplegable items Categorias
+            ddlCategorias.Items.Add("-Seleccionar una opcion-");
+            ddlCategorias.Items.Add("Celulares");
+            ddlCategorias.Items.Add("Televisores");
+            ddlCategorias.Items.Add("Media");
+            ddlCategorias.Items.Add("Audio");
 
         }
     }
