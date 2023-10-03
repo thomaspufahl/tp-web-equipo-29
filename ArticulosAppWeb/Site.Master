@@ -15,6 +15,35 @@
 </head>
 <body>
     <form id="form" runat="server">
+        <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Carrito de compras</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Articulos</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Categoria</a>
+                        </li>
+                        <li class="nav-item">
+                            <asp:DropDownList ID="ddlCategorias" CssClass ="form-select form-select-lg mb-3" runat="server"></asp:DropDownList>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Marca</a>
+                        </li>
+                        <li class="nav-item">
+                            <asp:DropDownList ID="ddlMarcas" CssClass ="form-select form-select-lg mb-3" runat="server"></asp:DropDownList>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
         <div>
             <asp:ContentPlaceHolder ID="Content" runat="server">
             </asp:ContentPlaceHolder>
