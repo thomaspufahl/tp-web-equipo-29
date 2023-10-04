@@ -21,7 +21,7 @@ namespace ArticulosAppServices
             conex = new SqlConnection();
             command = new SqlCommand();
 
-            conex.ConnectionString = ConfigurationManager.AppSettings["DevPufahlConnectionString"];
+            conex.ConnectionString = ConfigurationManager.AppSettings["ConexionString"];
         }
 
         public void setQuery(string query)
