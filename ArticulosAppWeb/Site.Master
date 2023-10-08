@@ -54,7 +54,7 @@
                 </div>
             </nav>
         </header>
-        <div class ="d-flex justify-content-around mt-4">
+        <div>
             <asp:ContentPlaceHolder ID="Content" runat="server">
             </asp:ContentPlaceHolder>
         </div>
