@@ -27,7 +27,7 @@
                                 <li class="list-group-item"><%#Eval("Marca.Description") %></li>
                             </ul>
                             <footer class="card-footer d-flex gap-2">
-                                <asp:Button ID="btnInformacion" cssclass = "btn btn-dark"  runat ="server" Text="Mas Informacion"/>
+                                <a class = "btn btn-dark" href="Producto.aspx?id=<%#Eval("id")%>">Mas información</a>
                                 <asp:Button ID="btnAgregarCarrito" cssclass = "btn btn-danger" runat="server" Text="Agregar al carrito"/>
                             </footer>
                         </article>
