@@ -6,20 +6,13 @@
     <section class="px-5 py-4">
         <h2 class="mb-4">Articulos</h2>
         <ul class="d-flex flex-wrap row-gap-5 m-0 p-0" style="place-content: space-between; list-style: none">
-            <asp:Repeater id = "ParentRepeater" runat="server" OnItemDataBound="ItemBound">
+            <asp:Repeater id = "ParentRepeater" runat="server">
                 <ItemTemplate>
                     <li>
                         <article class="card d-flex" style="max-width: 21rem">
                             <header class="card-body text-wrap">
-                                <asp:Repeater id="ChildRepeater" runat="server">
-                                    <ItemTemplate>
-                                        <img src="<%#Eval("UrlImagen")%>" class="card-img-top" alt="Imagen">
-                                        <p>
-                                            <%#Eval("UrlImagen")%>
-                                        </p>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                                <h5 class="card-title"> <%#Eval("Nombre") %> </h5>
+                                <img id="imagenArt" src="<%#Eval("Imagenes[0].UrlImagen")%>" alt="Alternate Text" onerror='javascript: this.src="https://cdn4.iconfinder.com/data/icons/ui-beast-3/32/ui-49-4096.png"' class="card-img-top"/>
+                                <h5 class="card-title"><%#Eval("Nombre")%></h5>
                                 <p class="card-text"><%#Eval("Descripcion") %></p>
                             </header>
                             <ul class="list-group list-group-flush">

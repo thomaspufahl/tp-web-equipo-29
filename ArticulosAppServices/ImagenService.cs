@@ -16,7 +16,7 @@ namespace ArticulosAppServices
 
             try
             {
-                db.setQuery("SELECT I.Id AS Id, I.IdArticulo AS IdArticulo, I.UrlImagen AS UrlImagen FROM IMAGENES I");
+                db.setQuery("SELECT I.Id AS Id, I.IdArticulo AS IdArticulo, I.ImagenUrl AS UrlImagen FROM IMAGENES I");
 
                 db.executeSelectionQuery();
 
@@ -53,8 +53,7 @@ namespace ArticulosAppServices
 
             try
             {
-                db.setQuery("SELECT I.Id AS Id, I.IdArticulo AS IdArticulo, I.ImagenUrl AS UrlImagen FROM IMAGENES I WHERE I.IdArticulo = @IdArticulo");
-                db.setParams("@IdArticulo", idArticulo);
+                db.setQuery($"SELECT I.Id AS Id, I.IdArticulo AS IdArticulo, I.ImagenUrl AS UrlImagen FROM IMAGENES I WHERE I.IdArticulo = {idArticulo}");
 
                 db.executeSelectionQuery();
 

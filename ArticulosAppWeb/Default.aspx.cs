@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using ArticulosAppServices;
 using ArticulosAppModels;
 using System.Web.DynamicData;
+using System.Net;
+using static System.Net.WebRequestMethods;
+using System.Net.Http;
 
 namespace ArticulosAppWeb
 {
@@ -19,28 +22,33 @@ namespace ArticulosAppWeb
             if (!IsPostBack)
             {
                 ArticuloService service = new ArticuloService();
+                ImagenService serviceImagen = new ImagenService();
+                
                 ListaArticulos = service.GetAll();
+
+                foreach (Articulo articulo in ListaArticulos)
+                {
+                    articulo.Imagenes = new List<Imagen>();
+                    articulo.Imagenes = serviceImagen.GetAllByIdArticulo(articulo.Id);
+                }                               
+
                 ParentRepeater.DataSource = ListaArticulos;
                 ParentRepeater.DataBind();
             }
-        }
+        }           
 
-        protected void ItemBound(object sender, RepeaterItemEventArgs args)
+        private void validateImages()
         {
-            if (args.Item.ItemType == ListItemType.Item || args.Item.ItemType == ListItemType.AlternatingItem)
-            {
-                ImagenService service = new ImagenService();
-                ListaArticulos[args.Item.ItemIndex].Imagenes = new List<Imagen>();
-                ListaArticulos[args.Item.ItemIndex].Imagenes = service.GetAllByIdArticulo(ListaArticulos[args.Item.ItemIndex].Id);                
-
-                Repeater childRepeater = (Repeater)args.Item.FindControl("ChildRepeater");
-                childRepeater.DataSource = ListaArticulos[args.Item.ItemIndex].Imagenes;
-                childRepeater.DataBind();
-            }
+            //imagen.UrlImagen = "https://cdn4.iconfinder.com/data/icons/ui-beast-3/32/ui-49-4096.png";
         }
 
+        protected void Image1_Unload(object sender, EventArgs e)
+        {
+            Image img = (Image)sender;
 
+            System.Diagnostics.Debug.WriteLine("Image1_Unload");    
 
-    
+            img.ImageUrl = "https://cdn4.iconfinder.com/data/icons/ui-beast-3/32/ui-49-4096.png";
+        }
     }
 }
