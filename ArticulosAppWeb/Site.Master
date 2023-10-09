@@ -27,8 +27,11 @@
                     <li>
                         <a class="btn btn-outline-light  text-light" href="#">Contact</a>
                     </li>
+                    
                 </ul>
                 <div class="d-flex me-3" role="search" style = "max-height 2rem">
+                    <asp:Label ID="lblCarrito" cssclass="text-light " runat="server" Text="0"></asp:Label>
+                    <img src="https://images.vexels.com/media/users/3/136826/isolated/preview/4751bdd75f3a5d3616fc98a8cc4dfa4a-icono-de-carrito-de-compras.png" alt="Bootstrap" width="40" height="30">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </div>
