@@ -29,4 +29,12 @@
             </asp:Repeater>
         </ul>
     </section>
+    <footer class="text-center text-bg-secondary fst-italic">
+        <ul class="bg-dark border-light d-flex flex-row justify-content-between" style ="list-style:none">
+            <li class=" fw-bolder text-start text-"> Año 2023 </li>
+            <li class=" fst-italic text-center">Nicolas Rodriguez    Thomas Pufahl</li>
+            <li class=" fst-italic text-end"> Programacion 3</li>
+        </ul>
+
+    </footer>
 </asp:Content>
