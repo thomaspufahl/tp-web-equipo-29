@@ -30,8 +30,7 @@ namespace ArticulosAppWeb
         
         private string ObtenerCantidadEnCarrito()
         {
-            Default Home = new Default();
-
+           
             if (ViewState["Pasaje"] != null)
             {
                 cantidadEnCarrito = ViewState["Pasaje"].ToString();
