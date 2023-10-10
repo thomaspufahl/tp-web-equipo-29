@@ -9,7 +9,7 @@ namespace ArticulosAppWeb
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        private int cantidadEnCarrito = 0;
+        string cantidadEnCarrito = "0";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,14 +24,20 @@ namespace ArticulosAppWeb
         // Función para actualizar el contador en el control Label
         private void ActualizarContador()
         {
-            lblCarrito.Text = cantidadEnCarrito.ToString();
+            lblCarrito.Text = cantidadEnCarrito;
         }
 
         
-        private int ObtenerCantidadEnCarrito()
+        private string ObtenerCantidadEnCarrito()
         {
-            
-            return 0; 
+            Default Home = new Default();
+
+            if (ViewState["Pasaje"] != null)
+            {
+                cantidadEnCarrito = ViewState["Pasaje"].ToString();
+            }
+
+            return cantidadEnCarrito; 
         }
     }
 }
