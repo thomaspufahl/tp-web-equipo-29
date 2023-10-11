@@ -17,17 +17,13 @@ namespace ArticulosAppWeb
         private CarritoContext _Context = CarritoContext.Instance;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                lblCarrito.Text = "0";
-            }
-
-            if (_Context.CarritoArticulos.CantidadArticulos > 0)
-            {
-                lblCarrito.Text = _Context.CarritoArticulos.CantidadArticulos.ToString();
-            }
         }
         
+        public Label ObtenerContadorCarrito()
+        {
+            return lblCarrito;
+        }
+
         public List<Articulo> ObtenerListaArticulos()
         {
             ArticuloService service = new ArticuloService();
