@@ -17,9 +17,9 @@
     <form id="form" runat="server">
         <header>
             <nav class="bg-dark border-light d-flex flex-row justify-content-between p-0 m-0">
-                <ul class = "d-flex flex-row gap-3 m-0 p-0" style = "list-style:none">
+                <ul class="d-flex flex-row gap-3 m-0 p-0" style="list-style: none">
                     <li>
-                        <a class="btn btn-outline-info text-light"  href="/">Carrito de Compras</a>
+                        <a class="btn btn-outline-info text-light" href="/">Carrito de Compras</a>
                     </li>
                     <li>
                         <a class="btn btn-outline-light text-light" href="/">Home</a>
@@ -27,22 +27,27 @@
                     <li>
                         <a class="btn btn-outline-light  text-light" href="#">Contact</a>
                     </li>
-                    
+
                 </ul>
-                <div class="d-flex me-3" role="search" style = "max-height 2rem">
-                    <asp:Label ID="lblCarrito" cssclass="text-light " runat="server" Text="0"></asp:Label>
+                <div class="d-flex me-3" role="search" style="max-height 2rem">
+                    <asp:Label ID="lblCarrito" CssClass="text-light " runat="server" Text="0"></asp:Label>
                     <img src="https://images.vexels.com/media/users/3/136826/isolated/preview/4751bdd75f3a5d3616fc98a8cc4dfa4a-icono-de-carrito-de-compras.png" alt="Bootstrap" width="40" height="30">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </div>
             </nav>
         </header>
-
-   
         <div>
             <asp:ContentPlaceHolder ID="Content" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <footer class="text-center text-bg-secondary fst-italic">
+            <ul class="bg-dark border-light d-flex flex-row justify-content-between" style="list-style: none">
+                <li class=" fw-bolder text-start text-">Año 2023 </li>
+                <li class=" fst-italic text-center">Nicolas Rodriguez    Thomas Pufahl</li>
+                <li class=" fst-italic text-end">Programacion 3</li>
+            </ul>
+        </footer>
     </form>
 </body>
 </html>
