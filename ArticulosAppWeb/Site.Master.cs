@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -9,16 +11,21 @@ namespace ArticulosAppWeb
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        string cantidadEnCarrito = "0";
+        public string cantidadEnCarrito { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-               
-                cantidadEnCarrito = ObtenerCantidadEnCarrito();
-
-                ActualizarContador();
+                lblCarrito.Text = "0";               
             }
+            else
+            {
+
+                cantidadEnCarrito = ObtenerCantidadEnCarrito();
+                ActualizarContador();
+                
+            }
+            
         }
 
         // Función para actualizar el contador en el control Label
@@ -30,13 +37,19 @@ namespace ArticulosAppWeb
         
         private string ObtenerCantidadEnCarrito()
         {
-           
-            if (ViewState["Pasaje"] != null)
+            if (ViewState["Contador"] != null)
             {
-                cantidadEnCarrito = ViewState["Pasaje"].ToString();
+                cantidadEnCarrito = ViewState["Contador"].ToString();
             }
+            else
+            {
+            cantidadEnCarrito = "No funca";
 
-            return cantidadEnCarrito; 
+            }
+            return cantidadEnCarrito;
+           
+
+
         }
     }
 }

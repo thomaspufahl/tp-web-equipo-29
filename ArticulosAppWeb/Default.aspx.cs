@@ -15,7 +15,7 @@ namespace ArticulosAppWeb
 {
     public partial class Default : System.Web.UI.Page
     {
-        public int contador { get; set; }
+        private int contador;
         public Articulo articulo { get; set; }
         private List<Articulo> ListaArticulos = null;
         private List<Articulo> Carrito = new List<Articulo>();
@@ -39,8 +39,9 @@ namespace ArticulosAppWeb
                 ParentRepeater.DataSource = ListaArticulos;
                 ParentRepeater.DataBind();
 
-
             }
+            
+               
         }           
 
         private void validateImages()
@@ -65,22 +66,24 @@ namespace ArticulosAppWeb
 
         protected void miRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            /*
             if (e.CommandName == "btnAgregarCarrito_Click")
             {
                 // Accede al objeto asociado al ítem del Repeater
                 articulo = (Articulo)e.Item.DataItem;
 
                 AgregarAlCarrito(articulo);
-                contador++;
-                ViewState["Pasaje"] = "contador";
+                
 
 
             }
+            */
         }
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-           
+            contador++;
+            ViewState["Contador"] = contador;
         }
     }
 }
