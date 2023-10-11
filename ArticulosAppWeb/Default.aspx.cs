@@ -44,20 +44,6 @@ namespace ArticulosAppWeb
                
         }           
 
-        private void validateImages()
-        {
-            //imagen.UrlImagen = "https://cdn4.iconfinder.com/data/icons/ui-beast-3/32/ui-49-4096.png";
-        }
-
-        protected void Image1_Unload(object sender, EventArgs e)
-        {
-            Image img = (Image)sender;
-
-            System.Diagnostics.Debug.WriteLine("Image1_Unload");    
-
-            img.ImageUrl = "https://cdn4.iconfinder.com/data/icons/ui-beast-3/32/ui-49-4096.png";
-        }
-
         private void AgregarAlCarrito (Articulo articulo)
         {
             Carrito.Add(articulo);

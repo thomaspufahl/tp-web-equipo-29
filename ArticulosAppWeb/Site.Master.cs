@@ -47,9 +47,6 @@ namespace ArticulosAppWeb
 
             }
             return cantidadEnCarrito;
-           
-
-
         }
     }
 }
