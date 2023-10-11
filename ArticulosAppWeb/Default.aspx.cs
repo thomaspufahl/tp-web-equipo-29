@@ -15,61 +15,29 @@ namespace ArticulosAppWeb
 {
     public partial class Default : System.Web.UI.Page
     {
-        private int contador;
-        public Articulo articulo { get; set; }
-        private List<Articulo> ListaArticulos = null;
-        private List<Articulo> Carrito = new List<Articulo>();
-
+        private CarritoContext _Context = CarritoContext.Instance;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                contador = 0;
-                ArticuloService service = new ArticuloService();
-                ImagenService serviceImagen = new ImagenService();
-                
-                ListaArticulos = service.GetAll();
-
-                foreach (Articulo articulo in ListaArticulos)
-                {
-                    articulo.Imagenes = new List<Imagen>();
-                    articulo.Imagenes = serviceImagen.GetAllByIdArticulo(articulo.Id);
-                }                               
-
-                ParentRepeater.DataSource = ListaArticulos;
+                ParentRepeater.DataSource = ((Site)Page.Master).ObtenerListaArticulos();
                 ParentRepeater.DataBind();
-
             }
-            
-               
         }           
-
-        private void AgregarAlCarrito (Articulo articulo)
-        {
-            Carrito.Add(articulo);
-
-        }
-
-        protected void miRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            /*
-            if (e.CommandName == "btnAgregarCarrito_Click")
-            {
-                // Accede al objeto asociado al ítem del Repeater
-                articulo = (Articulo)e.Item.DataItem;
-
-                AgregarAlCarrito(articulo);
-                
-
-
-            }
-            */
-        }
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-            contador++;
-            ViewState["Contador"] = contador;
+            Button btn = (Button)sender;
+
+            if (btn.CommandName.Equals("ArticuloId"))
+            {
+                Articulo ArticuloParaCarrito = ((Site)Master).ObtenerListaArticulos().Where(a => a.Id == int.Parse(btn.CommandArgument)).First();
+
+                System.Diagnostics.Debug.WriteLine("ArticuloParaCarrito.Id: " + ArticuloParaCarrito.Id);    
+                System.Diagnostics.Debug.WriteLine("ArticuloParaCarrito.Nombre: " + ArticuloParaCarrito.Descripcion);
+
+                _Context.CarritoArticulos.AgregarArticulo(ArticuloParaCarrito);
+            }
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using ArticulosAppModels;
+using ArticulosAppServices;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Services.Description;
@@ -11,42 +14,34 @@ namespace ArticulosAppWeb
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        public string cantidadEnCarrito { get; set; }
+        private CarritoContext _Context = CarritoContext.Instance;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                lblCarrito.Text = "0";               
+                lblCarrito.Text = "0";
             }
-            else
+
+            if (_Context.CarritoArticulos.CantidadArticulos > 0)
             {
-
-                cantidadEnCarrito = ObtenerCantidadEnCarrito();
-                ActualizarContador();
-                
+                lblCarrito.Text = _Context.CarritoArticulos.CantidadArticulos.ToString();
             }
-            
         }
-
-        // Función para actualizar el contador en el control Label
-        private void ActualizarContador()
-        {
-            lblCarrito.Text = cantidadEnCarrito;
-        }
-
         
-        private string ObtenerCantidadEnCarrito()
+        public List<Articulo> ObtenerListaArticulos()
         {
-            if (ViewState["Contador"] != null)
-            {
-                cantidadEnCarrito = ViewState["Contador"].ToString();
-            }
-            else
-            {
-            cantidadEnCarrito = "No funca";
+            ArticuloService service = new ArticuloService();
+            ImagenService serviceImagen = new ImagenService();
 
+            List<Articulo> ListaArticulos = service.GetAll();
+
+            foreach (Articulo articulo in ListaArticulos)
+            {
+                articulo.Imagenes = new List<Imagen>();
+                articulo.Imagenes = serviceImagen.GetAllByIdArticulo(articulo.Id);
             }
-            return cantidadEnCarrito;
+
+            return ListaArticulos; 
         }
     }
 }
