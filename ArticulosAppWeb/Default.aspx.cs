@@ -33,9 +33,6 @@ namespace ArticulosAppWeb
             {
                 Articulo ArticuloParaCarrito = ((Site)Master).ObtenerListaArticulos().Where(a => a.Id == int.Parse(btn.CommandArgument)).First();
 
-                System.Diagnostics.Debug.WriteLine("ArticuloParaCarrito.Id: " + ArticuloParaCarrito.Id);    
-                System.Diagnostics.Debug.WriteLine("ArticuloParaCarrito.Nombre: " + ArticuloParaCarrito.Descripcion);
-
                 _Context.CarritoArticulos.AgregarArticulo(ArticuloParaCarrito);
             }
         }
