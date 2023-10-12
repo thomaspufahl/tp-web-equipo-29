@@ -15,36 +15,24 @@ namespace ArticulosAppWeb
     public partial class Producto : System.Web.UI.Page
     {
         public string ArticuloId;
-        Articulo ArticuloPagina;
+        public Articulo ArticuloPagina;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 ArticuloId = Request.QueryString["id"].ToString();
-                //TituloProducto.InnerText = "Producto " + ArticuloId;
-                ArticuloService articuloService = new ArticuloService();
-                ArticuloPagina = articuloService.GetAll().Find(x => x.Id == int.Parse(ArticuloId));
-                gvArticulo.DataSource = new List<Articulo> { ArticuloPagina };
-                gvArticulo.DataBind();
+                ArticuloPagina = ((Site)Master).ObtenerListaArticulos().Where(x => x.Id == int.Parse(ArticuloId)).FirstOrDefault();
 
-             
+                TituloProducto.InnerText = "Producto " + ArticuloId;
+                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
+
+                ListaImagenesRepeater.DataSource = ArticuloPagina.Imagenes;
+                ListaImagenesRepeater.DataBind();
             }
             catch (Exception)
             {
                 Response.Redirect("/");
-            }
-            
-
-        }
-
-        protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-
+            }          
         }
     }
 }

@@ -4,30 +4,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <section>
-        <asp:GridView runat="server" ID="gvArticulo" AutoGenerateColumns="false">
-            <Columns>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:Image ID="imgArticulo" runat="server" CssClass="img-thumbnail" ImageUrl=<%# Eval("imagenes[0].UrlImagen") %> Width="700px" Height="500px" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <div class="flex-row px-5 py-5">
-                            <h5 class="text-dark ">$ <%#Eval("Precio") %></h5>
-                            <br />
-                            <h4><%#Eval("Descripcion") %></h4>
-                            <asp:Button ID="btnAgregar" runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="btnAgregar_Click" />
-                            <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger" Text="Eliminar" OnClick="btnEliminar_Click" />
-
-                        </div>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-
-
-
-        </asp:GridView>
+        <h2 id="TituloProducto" runat="server"></h2>
+        <p>----------------</p>
+        <p>IMAGEN PRINCIPAL</p>
+        <p>URL IMAGEN: <%#Eval("UrlImagen") %></p>
+        <img runat="server" id="ImagenPrincipalArticulo" src="#" alt="Alternate Text" />
+        <p>----------------</p>
+        <br />
+        <p>----------------</p>
+        <p>LISTA IMAGENES</p>
+        <ul>
+            <asp:Repeater runat="server" ID="ListaImagenesRepeater">
+                <ItemTemplate>
+                    <p>----------------</p>
+                    <li>
+                        <p>URL IMAGEN: <%#Eval("UrlImagen") %></p>
+                        <img src="<%#Eval("UrlImagen") %>" alt="Alternate Text" />
+                    </li>
+                    <p>----------------</p>
+                </ItemTemplate>
+            </asp:Repeater>
+        </ul>
+        <p>FIN LISTA IMAGENES</p>
+        <p>----------------</p>
     </section>
 </asp:Content>
