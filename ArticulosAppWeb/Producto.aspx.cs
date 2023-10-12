@@ -8,6 +8,8 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
+
+
 namespace ArticulosAppWeb
 {   
     public partial class Producto : System.Web.UI.Page
@@ -22,11 +24,27 @@ namespace ArticulosAppWeb
                 //TituloProducto.InnerText = "Producto " + ArticuloId;
                 ArticuloService articuloService = new ArticuloService();
                 ArticuloPagina = articuloService.GetAll().Find(x => x.Id == int.Parse(ArticuloId));
+                gvArticulo.DataSource = new List<Articulo> { ArticuloPagina };
+                gvArticulo.DataBind();
+
+             
             }
             catch (Exception)
             {
                 Response.Redirect("/");
             }
+            
+
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
