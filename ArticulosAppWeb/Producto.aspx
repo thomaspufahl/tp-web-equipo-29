@@ -8,7 +8,9 @@
         <p>----------------</p>
         <p>IMAGEN PRINCIPAL</p>
         <p>URL IMAGEN: <%#Eval("UrlImagen") %></p>
-        <img runat="server" id="ImagenPrincipalArticulo" src="#" alt="Alternate Text" />
+        <img runat="server" id="ImagenPrincipalArticulo" src="#" alt="Alternate Text" width="700" height="500" />
+        <asp:Button ID="Atras" Onclick="Atras_Click" runat="server" Text="Atras" />
+        <asp:Button ID="Siguiente"  Onclick="Siguiente_Click" runat="server" Text="Siguiente" />
         <p>----------------</p>
         <br />
         <p>----------------</p>

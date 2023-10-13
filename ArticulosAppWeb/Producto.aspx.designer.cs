@@ -33,6 +33,24 @@ namespace ArticulosAppWeb
         protected global::System.Web.UI.HtmlControls.HtmlImage ImagenPrincipalArticulo;
 
         /// <summary>
+        /// Atras control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Atras;
+
+        /// <summary>
+        /// Siguiente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Siguiente;
+
+        /// <summary>
         /// ListaImagenesRepeater control.
         /// </summary>
         /// <remarks>

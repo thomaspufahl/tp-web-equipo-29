@@ -25,14 +25,45 @@ namespace ArticulosAppWeb
 
                 TituloProducto.InnerText = "Producto " + ArticuloId;
                 ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
+                
 
-                ListaImagenesRepeater.DataSource = ArticuloPagina.Imagenes;
-                ListaImagenesRepeater.DataBind();
+                //ListaImagenesRepeater.DataSource = ArticuloPagina.Imagenes;
+                //ListaImagenesRepeater.DataBind();
             }
             catch (Exception)
             {
                 Response.Redirect("/");
             }          
+        }
+
+        protected void Siguiente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0 + 1).UrlImagen;
+
+            }
+            catch
+            {
+                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
+             
+            }
+        }
+
+        protected void Atras_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0 - 1).UrlImagen;
+
+            }
+            catch 
+            { 
+                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
+               
+            }
+
         }
     }
 }
