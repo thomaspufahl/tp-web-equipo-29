@@ -82,7 +82,22 @@ namespace ArticulosAppWeb
 
         protected void btnAgregarAlCarrito_Click(object sender, EventArgs e)
         {
+            int cantidadUndiades = 0;
+            switch (ddlUnidades.Text)
+            {
+                case "1 Unidad": cantidadUndiades = 1; break;   
+                case "2 Unidades": cantidadUndiades = 2; break;   
+                case "3 Unidades": cantidadUndiades = 3; break;   
+                case "4 Unidades": cantidadUndiades = 4; break;   
+                case "5 Unidades": cantidadUndiades = 5; break;   
+                case "Mas de 5 Unidades": cantidadUndiades = 6; break;   
+
+            }
+            for (int i = 0; i < cantidadUndiades; i++)
+            {
             _Context.CarritoArticulos.AgregarArticulo(ArticuloPagina);
+            }
+
             ((Site)Master).ObtenerContadorCarrito().Text = _Context.CarritoArticulos.CantidadArticulos.ToString();
 
         }
