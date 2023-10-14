@@ -14,14 +14,12 @@ namespace ArticulosAppWeb
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        private CarritoContext _Context = CarritoContext.Instance;
         protected void Page_Load(object sender, EventArgs e)
         {
-        }
-        
-        public Label ObtenerContadorCarrito()
-        {
-            return lblCarrito;
+            if (!IsPostBack)
+            {
+                ActualizarContadorCarrito();
+            }
         }
 
         public List<Articulo> ObtenerListaArticulos()
@@ -39,5 +37,96 @@ namespace ArticulosAppWeb
 
             return ListaArticulos; 
         }
+
+        public bool ExisteSesion()
+        {
+            if (Session["Carrito"] != null)
+            {
+                return true;
+            }           
+
+            return false;
+        }
+
+        private void IniciarSesion()
+        {
+            if (ExisteSesion()) return;
+
+            Session.Add("Carrito", new List<Articulo>());
+            ActualizarContadorCarrito();
+        }
+
+        private void CerrarSesion()
+        {
+            if (!ExisteSesion()) return;
+
+            Session.Remove("Carrito");
+            ActualizarContadorCarrito();
+        }
+
+        public void VaciarSesion()
+        {
+            if (!ExisteSesion()) return;
+
+            ObtenerSesion().Clear();
+            ActualizarContadorCarrito();
+        }
+
+        public List<Articulo> ObtenerSesion()
+        {
+            return (List<Articulo>)Session["Carrito"];
+        }
+
+        public void AgregarArticuloSesion(Articulo articulo)
+        {
+            if (!ExisteSesion())
+            {
+                Debug.WriteLine("No existe sesion pero...");
+
+                IniciarSesion();
+
+                Debug.WriteLine("Se creo sesion");
+            };
+
+            ObtenerSesion().Add(articulo);
+            ActualizarContadorCarrito();
+        }
+
+        public void SacarArticuloSesion(Articulo articulo)
+        {
+            if (!ExisteSesion()) return;
+
+            ObtenerSesion().Remove(articulo);
+            ActualizarContadorCarrito();
+        }
+
+        private void ActualizarContadorCarrito()
+        {
+            if (!ExisteSesion())
+            {
+                lblCarrito.Text = "0";
+                return;
+            }
+
+            lblCarrito.Text = ObtenerSesion().Count.ToString();
+        }
+
+        public void MostrarSesion()
+        {
+            if (!ExisteSesion())
+            {
+                System.Diagnostics.Debug.WriteLine("No existe sesion");
+                return;
+            }
+
+            foreach (Articulo articulo in ObtenerSesion())
+            {
+                System.Diagnostics.Debug.WriteLine("ID: " + articulo.Id + ", NOMBRE: " + articulo.Nombre);
+            }
+
+            System.Diagnostics.Debug.WriteLine("Cantidad de articulos: " + ObtenerSesion().Count);
+            System.Diagnostics.Debug.WriteLine("FINALIZO MUESTREO");
+        }
+
     }
 }

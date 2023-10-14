@@ -15,7 +15,6 @@ namespace ArticulosAppWeb
 {
     public partial class Default : System.Web.UI.Page
     {
-        private CarritoContext _Context = CarritoContext.Instance;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -33,8 +32,7 @@ namespace ArticulosAppWeb
             {
                 Articulo ArticuloParaCarrito = ((Site)Master).ObtenerListaArticulos().Where(a => a.Id == int.Parse(btn.CommandArgument)).First();
 
-                _Context.CarritoArticulos.AgregarArticulo(ArticuloParaCarrito);
-                ((Site)Master).ObtenerContadorCarrito().Text = _Context.CarritoArticulos.CantidadArticulos.ToString();
+                ((Site)Master).AgregarArticuloSesion(ArticuloParaCarrito);
             }
         }
     }

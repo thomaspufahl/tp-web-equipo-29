@@ -17,7 +17,6 @@ namespace ArticulosAppWeb
     {
         public string ArticuloId;
         public Articulo ArticuloPagina;
-        private CarritoContext _Context = CarritoContext.Instance;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -95,11 +94,8 @@ namespace ArticulosAppWeb
             }
             for (int i = 0; i < cantidadUndiades; i++)
             {
-            _Context.CarritoArticulos.AgregarArticulo(ArticuloPagina);
+                ((Site)Master).AgregarArticuloSesion(ArticuloPagina);
             }
-
-            ((Site)Master).ObtenerContadorCarrito().Text = _Context.CarritoArticulos.CantidadArticulos.ToString();
-
         }
     }
 }
