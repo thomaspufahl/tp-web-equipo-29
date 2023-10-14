@@ -23,8 +23,11 @@ namespace ArticulosAppWeb
                 ArticuloId = Request.QueryString["id"].ToString();
                 ArticuloPagina = ((Site)Master).ObtenerListaArticulos().Where(x => x.Id == int.Parse(ArticuloId)).FirstOrDefault();
 
-                TituloProducto.InnerText = "Producto " + ArticuloId;
+                NombreProducto.InnerText = ArticuloPagina.Nombre.ToString();
                 ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
+                PrecioProducto.Text = "$ " +  ArticuloPagina.Precio.ToString();   
+                DescripcionArticulo.Text = ArticuloPagina.Descripcion.ToString();
+                
                 
 
                 //ListaImagenesRepeater.DataSource = ArticuloPagina.Imagenes;
