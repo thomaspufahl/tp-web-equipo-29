@@ -21,7 +21,7 @@
                 <asp:Label ID="lblMarca" cssclass="text-bg-info" runat="server" Text=""></asp:Label>
                 <br />
                 <div class=" py-5 gap-1">
-                    <p>Imagenes</p>
+                    <p runat="server" id="CantidadImagenes"></p>
                     <asp:Button ID="Atras" OnClick="Atras_Click" CssClass="btn btn-outline-secondary" runat="server" Text="Atras" />
                     <asp:Button ID="Siguiente" OnClick="Siguiente_Click" CssClass="btn btn-outline-primary" runat="server" Text="Siguiente" />
                 </div>

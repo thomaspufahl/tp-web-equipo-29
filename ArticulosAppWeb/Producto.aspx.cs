@@ -19,15 +19,11 @@ namespace ArticulosAppWeb
         public Articulo ArticuloPagina;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Request.QueryString["id"] == null)
             {
-                ddlUnidades.Items.Add("1 Unidad");
-                ddlUnidades.Items.Add("2 Unidades");
-                ddlUnidades.Items.Add("3 Unidades");
-                ddlUnidades.Items.Add("4 Unidades");
-                ddlUnidades.Items.Add("5 Unidades");
-                ddlUnidades.Items.Add("Mas de 5 Unidades");
+                Response.Redirect("/");
             }
+
             try
             {
                 ArticuloId = Request.QueryString["id"].ToString();
@@ -40,43 +36,72 @@ namespace ArticulosAppWeb
                 lblCategoria.Text = ArticuloPagina.Categoria.ToString();
                 lblMarca.Text = ArticuloPagina.Marca.ToString();
 
+                ActualizarIndiceImagen();
             }
             catch (Exception)
             {
                 Response.Redirect("/");
             }
 
+            if (!IsPostBack)
+            {
 
+                ddlUnidades.Items.Add("1 Unidad");
+                ddlUnidades.Items.Add("2 Unidades");
+                ddlUnidades.Items.Add("3 Unidades");
+                ddlUnidades.Items.Add("4 Unidades");
+                ddlUnidades.Items.Add("5 Unidades");
+                ddlUnidades.Items.Add("Mas de 5 Unidades");
+            }
+
+        }
+
+        private void ActualizarIndiceImagen()
+        {
+            int indiceImagen = IndiceImagenPrincipal();
+
+            if (indiceImagen == -1)
+            {
+                return;
+            }
+
+            CantidadImagenes.InnerText = $"Imagen {indiceImagen+1}/{ArticuloPagina.Imagenes.Count}";
+        }
+
+        private int IndiceImagenPrincipal()
+        {
+            foreach (Imagen imagen in ArticuloPagina.Imagenes)
+            {
+                if (imagen.UrlImagen == ImagenPrincipalArticulo.Src)
+                {
+                    return ArticuloPagina.Imagenes.IndexOf(imagen);
+                }
+            }
+
+            return -1;
         }
 
         protected void Siguiente_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0 + 1).UrlImagen;
+            int indiceImagen = IndiceImagenPrincipal();
 
-            }
-            catch
+            if (indiceImagen < ArticuloPagina.Imagenes.Count - 1)
             {
-                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
-
+                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(indiceImagen+1).UrlImagen;
+                ActualizarIndiceImagen();
             }
         }
 
+
         protected void Atras_Click(object sender, EventArgs e)
         {
+            int indiceImagen = IndiceImagenPrincipal();
 
-            try
+            if (indiceImagen > 0)
             {
-                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0 - 1).UrlImagen;
-
+                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(indiceImagen-1).UrlImagen;
+                ActualizarIndiceImagen();
             }
-            catch
-            {
-                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
-
-            }
-
         }
 
         protected void btnAgregarAlCarrito_Click(object sender, EventArgs e)
