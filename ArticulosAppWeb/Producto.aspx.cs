@@ -27,11 +27,12 @@ namespace ArticulosAppWeb
                 ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
                 PrecioProducto.Text = "$ " +  ArticuloPagina.Precio.ToString();   
                 DescripcionArticulo.Text = ArticuloPagina.Descripcion.ToString();
+                lblCategoria.Text = ArticuloPagina.Categoria.ToString();
+                lblMarca.Text = ArticuloPagina.Marca.ToString();
                 
                 
 
-                //ListaImagenesRepeater.DataSource = ArticuloPagina.Imagenes;
-                //ListaImagenesRepeater.DataBind();
+                
             }
             catch (Exception)
             {
