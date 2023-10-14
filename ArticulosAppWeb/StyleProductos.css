@@ -1,0 +1,41 @@
+﻿.product-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 30px;
+    border: 1px solid #ccc;
+    justify-content: center;
+
+}
+
+.product-image {
+    width: 500px;
+    padding-right: 20px;
+    height: 700px;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    width: 150%;
+}
+
+.product-details {
+    
+    margin-top: 60px;
+    width: 60%;
+    font-size: 20px;
+    font-family: Verdana, sans-serif;
+}
+
+
+
+.product-details input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.product-details #PrecioProducto {
+    font-weight: bold;
+    font-size: 24px;
+}
