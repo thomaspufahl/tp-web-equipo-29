@@ -29,8 +29,13 @@ namespace ArticulosAppWeb
                 DescripcionArticulo.Text = ArticuloPagina.Descripcion.ToString();
                 lblCategoria.Text = ArticuloPagina.Categoria.ToString();
                 lblMarca.Text = ArticuloPagina.Marca.ToString();
-                
-                
+
+                ddlUnidades.Items.Add("1 Unidad");
+                ddlUnidades.Items.Add("2 Unidades");
+                ddlUnidades.Items.Add("3 Unidades");
+                ddlUnidades.Items.Add("4 Unidades");
+                ddlUnidades.Items.Add("5 Unidades");
+                ddlUnidades.Items.Add("Mas de 5 Unidades");
 
                 
             }

@@ -19,10 +19,14 @@
                 <asp:Label ID="lblCategoria" cssclass="text-bg-info" runat="server" Text=""></asp:Label>
                 <br />  
                 <asp:Label ID="lblMarca" cssclass="text-bg-info" runat="server" Text=""></asp:Label>
+                <br />
                 <div class=" py-5 gap-1">
                     <p>Imagenes</p>
                     <asp:Button ID="Atras" OnClick="Atras_Click" CssClass="btn btn-outline-secondary" runat="server" Text="Atras" />
                     <asp:Button ID="Siguiente" OnClick="Siguiente_Click" CssClass="btn btn-outline-primary" runat="server" Text="Siguiente" />
+                </div>
+                <div class=" py-2 gap-1" >
+                <asp:DropDownList ID="ddlUnidades" cssclass="form-select" Width="210px" runat="server"></asp:DropDownList>
                 </div>
                 <div>
                     <asp:Button ID="Button1" CssClass="btn btn-primary btn-lg" Style="margin-bottom: 10px; width: 300px; height: 60px" runat="server" Text="Comprar Ahora" />
