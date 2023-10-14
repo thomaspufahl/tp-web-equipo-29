@@ -3,6 +3,7 @@ using ArticulosAppServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -16,6 +17,7 @@ namespace ArticulosAppWeb
     {
         public string ArticuloId;
         public Articulo ArticuloPagina;
+        private CarritoContext _Context = CarritoContext.Instance;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -27,25 +29,25 @@ namespace ArticulosAppWeb
                 ddlUnidades.Items.Add("5 Unidades");
                 ddlUnidades.Items.Add("Mas de 5 Unidades");
             }
-                try
-                {
-                    ArticuloId = Request.QueryString["id"].ToString();
-                    ArticuloPagina = ((Site)Master).ObtenerListaArticulos().Where(x => x.Id == int.Parse(ArticuloId)).FirstOrDefault();
+            try
+            {
+                ArticuloId = Request.QueryString["id"].ToString();
+                ArticuloPagina = ((Site)Master).ObtenerListaArticulos().Where(x => x.Id == int.Parse(ArticuloId)).FirstOrDefault();
 
-                    NombreProducto.InnerText = ArticuloPagina.Nombre.ToString();
-                    ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
-                    PrecioProducto.Text = "$ " + ArticuloPagina.Precio.ToString();
-                    DescripcionArticulo.Text = ArticuloPagina.Descripcion.ToString();
-                    lblCategoria.Text = ArticuloPagina.Categoria.ToString();
-                    lblMarca.Text = ArticuloPagina.Marca.ToString();
+                NombreProducto.InnerText = ArticuloPagina.Nombre.ToString();
+                ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
+                PrecioProducto.Text = "$ " + ArticuloPagina.Precio.ToString();
+                DescripcionArticulo.Text = ArticuloPagina.Descripcion.ToString();
+                lblCategoria.Text = ArticuloPagina.Categoria.ToString();
+                lblMarca.Text = ArticuloPagina.Marca.ToString();
 
-                }
-                catch (Exception)
-                {
-                    Response.Redirect("/");
-                }
+            }
+            catch (Exception)
+            {
+                Response.Redirect("/");
+            }
 
-            
+
         }
 
         protected void Siguiente_Click(object sender, EventArgs e)
@@ -75,6 +77,13 @@ namespace ArticulosAppWeb
                 ImagenPrincipalArticulo.Src = ArticuloPagina.Imagenes.ElementAt(0).UrlImagen;
 
             }
+
+        }
+
+        protected void btnAgregarAlCarrito_Click(object sender, EventArgs e)
+        {
+            _Context.CarritoArticulos.AgregarArticulo(ArticuloPagina);
+            ((Site)Master).ObtenerContadorCarrito().Text = _Context.CarritoArticulos.CantidadArticulos.ToString();
 
         }
     }

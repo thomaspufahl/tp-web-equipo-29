@@ -29,9 +29,9 @@
                 <asp:DropDownList ID="ddlUnidades" cssclass="form-select" Width="210px" runat="server"></asp:DropDownList>
                 </div>
                 <div>
-                    <asp:Button ID="Button1" CssClass="btn btn-primary btn-lg" Style="margin-bottom: 10px; width: 300px; height: 60px" runat="server" Text="Comprar Ahora" />
+                    <asp:Button ID="btnComprarAhora" CssClass="btn btn-primary btn-lg" Style="margin-bottom: 10px; width: 300px; height: 60px" runat="server" Text="Comprar Ahora" />
                     <br />
-                    <asp:Button ID="Button2" CssClass="btn btn-secondary btn-lg" Style="margin-top: 10px; width: 300px; height: 60px" runat="server" Text="Agregar al carrito" />
+                    <asp:Button ID="btnAgregarAlCarrito" onclick="btnAgregarAlCarrito_Click" CssClass="btn btn-secondary btn-lg" Style="margin-top: 10px; width: 300px; height: 60px" runat="server" Text="Agregar al carrito" />
                 </div>
             </div>
         </div>
