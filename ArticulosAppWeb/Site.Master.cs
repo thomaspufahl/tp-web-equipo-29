@@ -95,9 +95,24 @@ namespace ArticulosAppWeb
         public void SacarArticuloSesion(Articulo articulo)
         {
             if (!ExisteSesion()) return;
+            if (!(ObtenerSesion().Exists(x => x.Id == articulo.Id)))
+            {
+                return;
+            }
 
-            ObtenerSesion().Remove(articulo);
+            MostrarSesion();
+
+            if (ObtenerSesion().Remove(ObtenerSesion().Where(x => x.Id == articulo.Id).First()))
+            {
+                Debug.WriteLine("Se removio articulo");
+            }
+            else
+            {
+                Debug.WriteLine("No se removio articulo");
+            }
+
             ActualizarContadorCarrito();
+            Response.Redirect("/Carrito.aspx");
         }
 
         private void ActualizarContadorCarrito()

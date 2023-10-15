@@ -1,6 +1,7 @@
 ﻿using ArticulosAppModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,7 +40,18 @@ namespace ArticulosAppWeb
 
         protected void EliminarProducto_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
 
+            Debug.WriteLine("ENTRE");
+
+            if (btn.CommandName.Equals("ArticuloParaBorrarId"))
+            {
+                Debug.WriteLine("PASE EL IF");
+                Articulo ArticuloSeleccionado = ((Site)Master).ObtenerListaArticulos().Where(a => a.Id == int.Parse(btn.CommandArgument)).First();
+
+                ((Site)Master).SacarArticuloSesion(ArticuloSeleccionado);
+                Debug.WriteLine("EJECUTE");
+            }
         }
     }
 }

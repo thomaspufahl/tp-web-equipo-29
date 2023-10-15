@@ -36,10 +36,9 @@
                             <td>
                                 <%#Eval("Precio")%>
                                 <br />
-                                <asp:Button ID="EliminarProducto" CssClass="mt-5 btn btn-danger" onclick="EliminarProducto_Click" runat="server" Text="Eliminar"  />
+                                    <asp:Button ID="EliminarProducto" CssClass="mt-5 btn btn-danger" onclick="EliminarProducto_Click" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloParaBorrarId" runat="server" Text="Eliminar"  />
                             </td>
-                    </tbody>
-
+                            </tr>
                 </ItemTemplate>
             </asp:Repeater>
         </table>
