@@ -9,8 +9,8 @@
             <div class="d-flex flex-column gap-2 card py-4 px-3">
 
                 <div class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="buscar" aria-label="buscar">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    <input runat="server" id="InputBuscar" class="form-control me-2" type="search" placeholder="buscar por nombre" aria-label="buscar">
+                    <asp:Button id="btnBuscar" runat="server" class="btn btn-outline-success" type="submit" Text="Buscar" OnClick="btnBuscar_Click"/>
                 </div>
 
                 <a class="btn btn-primary" href="/">Borrar filtro</a>
@@ -45,7 +45,7 @@
         </aside>
         <section>
             <h2 class="mb-4">Artículos</h2>
-            <ul runat="server" id="listaArticulos" class="d-flex flex-wrap row-gap-5 m-0 p-0" style="place-content: space-between; list-style: none">
+            <ul runat="server" id="listaArticulos" class="d-flex flex-wrap row-gap-5 m-0 p-0 place justify-content-evenly justify-content-xxl-between" style="list-style: none">
                 <asp:Repeater ID="ParentRepeater" runat="server">
                     <ItemTemplate>
                         <li>

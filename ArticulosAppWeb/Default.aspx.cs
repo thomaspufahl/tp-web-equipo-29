@@ -57,7 +57,13 @@ namespace ArticulosAppWeb
             if (Request.QueryString["filtro"] != null)
             {
                 string filtro = Request.QueryString["filtro"].ToString();
-                string value = Request.QueryString["value"].ToString();
+                string value = Request.QueryString["value"].ToString() ?? string.Empty;
+
+                if (value.Equals(string.Empty))
+                {
+                    Response.Redirect("Default.aspx");
+                    return;
+                }
 
                 if (filtro.Equals("marca"))
                 {
@@ -71,8 +77,17 @@ namespace ArticulosAppWeb
                     ParentRepeater.DataBind();
                 }
 
-                listaArticulos.Attributes["class"] = "d-flex flex-wrap row-gap-5 m-0 p-0 gap-5";
+                if (filtro.Equals("busqueda"))
+                {
+                    ParentRepeater.DataSource = ((Site)Page.Master).ObtenerListaArticulos().FindAll(a => a.Nombre.ToLower().Contains(value.ToLower()));
+                    ParentRepeater.DataBind();
+                }
             }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx?filtro=busqueda&value=" + InputBuscar.Value);
         }
     }
 }
