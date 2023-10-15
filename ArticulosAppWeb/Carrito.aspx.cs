@@ -36,5 +36,10 @@ namespace ArticulosAppWeb
             }
 
         }
+
+        protected void EliminarProducto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

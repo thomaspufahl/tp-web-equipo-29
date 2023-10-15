@@ -33,7 +33,11 @@
                             <td><%#Eval("Nombre")%></td>
                             <td><%#Eval("Categoria.Description")%></td>
                             <td><%#Eval("Marca.Description")%></td>
-                            <td><%#Eval("Precio")%></td>
+                            <td>
+                                <%#Eval("Precio")%>
+                                <br />
+                                <asp:Button ID="EliminarProducto" CssClass="mt-5 btn btn-danger" onclick="EliminarProducto_Click" runat="server" Text="Eliminar"  />
+                            </td>
                     </tbody>
 
                 </ItemTemplate>
