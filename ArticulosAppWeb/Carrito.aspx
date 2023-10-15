@@ -15,9 +15,10 @@
 
     <asp:Panel ID="TablaCarrito" runat="server" Visible="true">
         <section class="py-5">
-            <table class="table">
+            <table class="table text-start px-5">
                 <thead class="table-dark">
                     <tr>
+                        <th scope="col"></th>
                         <th scope="col">Imagen</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Categoria</th>
@@ -26,24 +27,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                <asp:Repeater ID="CarritoRepeater" runat="server">
-                    <ItemTemplate>
+                    <asp:Repeater ID="CarritoRepeater" runat="server">
+                        <ItemTemplate>
                             <tr>
                                 <td>
-                                    <img src="<%#Eval("Imagenes[0].UrlImagen")%>" alt="Alternate Text" onerror='javascript: this.src="https://cdn4.iconfinder.com/data/icons/ui-beast-3/32/ui-49-4096.png"' width="100px" height="100px" />
+                                    <asp:Button ID="EliminarProducto" CssClass="btn btn-danger" OnClick="EliminarProducto_Click" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloParaBorrarId" runat="server" Text="X" />
+                                </td>
+                                <td>
+                                    <img src="<%#Eval("Imagenes[0].UrlImagen")%>" alt="Alternate Text" onerror='javascript: this.src="https://cdn4.iconfinder.com/data/icons/ui-beast-3/32/ui-49-4096.png"' width="100" />
                                 </td>
                                 <td><%#Eval("Nombre")%></td>
                                 <td><%#Eval("Categoria.Description")%></td>
                                 <td><%#Eval("Marca.Description")%></td>
                                 <td>
                                     <%#Eval("Precio")%>
-                                    <br />
-                                    <asp:Button ID="EliminarProducto" CssClass="mt-5 btn btn-danger" onclick="EliminarProducto_Click" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloParaBorrarId" runat="server" Text="Eliminar"  />
                                 </td>
                             </tr>
-                    </ItemTemplate>
-                </asp:Repeater>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" class="text-end">Total</td>
+                        <td>
+                            <asp:Label ID="Total" runat="server" Text="0"></asp:Label>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </section>
     </asp:Panel>

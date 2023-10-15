@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,7 +24,7 @@ namespace ArticulosAppWeb
                     TablaCarrito.Visible = false;
                 }
             }
-            catch 
+            catch
             {
                 NoHayProductos.Visible = true;
                 TablaCarrito.Visible = false;
@@ -34,6 +35,8 @@ namespace ArticulosAppWeb
             {
                 CarritoRepeater.DataSource = ((Site)Master).ObtenerSesion();
                 CarritoRepeater.DataBind();
+
+                ActualizarTotal();
             }
 
         }
@@ -52,6 +55,27 @@ namespace ArticulosAppWeb
                 ((Site)Master).SacarArticuloSesion(ArticuloSeleccionado);
                 Debug.WriteLine("EJECUTE");
             }
+        }
+
+        private decimal CalcularTotal()
+        {
+            if (!((Site)Master).ExisteSesion()) 
+            {
+                return -1;
+            }
+
+            decimal total = 0;
+            foreach (Articulo a in lista)
+            {
+                total += a.Precio;
+            }
+
+            return total;
+        }
+
+        private void ActualizarTotal()
+        {
+            Total.Text = "$" + CalcularTotal().ToString();
         }
     }
 }
