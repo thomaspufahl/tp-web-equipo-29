@@ -16,44 +16,26 @@
 <body>
     <form id="form" runat="server">
         <header>
-            <nav class="bg-dark border-light d-flex flex-row justify-content-between p-3 m-0">
-                <ul class="d-flex flex-row gap-3 m-0 p-0" style="list-style: none">
-                    <li>
-                        <a class="btn btn-outline-info text-light" href="/">Carrito de Compras</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-outline-light text-light" href="/">Home</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-outline-light  text-light" href="#">Contact</a>
-                    </li>
-
-                </ul>
-                <div class="d-flex me-3" role="search">
-                    <div class="d-flex align-items-center gap-3 me-4">
+            <nav class="bg-dark border-light d-flex flex-row justify-content-between py-4 px-5 m-0">
+                <h1 class="text-white m-0" style="font-size: 1.5rem; align-self: center"><a href="/" style="text-decoration: inherit; color: inherit">Articulos App Web</a></h1>
+                <div class="d-flex gap-3">
+                    <a class="border-bottom border-2 border-danger text-light fw-medium" style="text-decoration: inherit; color: inherit; font-size: 1.125rem; align-self: center" href="/Carrito.aspx">Carrito</a>
+                    <div class="d-flex align-items-center gap-3 ms-3">
+                        <img src="https://images.vexels.com/media/users/3/136826/isolated/preview/4751bdd75f3a5d3616fc98a8cc4dfa4a-icono-de-carrito-de-compras.png" alt="Bootstrap" width="30" height="30">
                         <asp:Label ID="lblCarrito" CssClass="text-light " runat="server" Text="0"></asp:Label>
-                        <a href="Carrito.aspx">
-                            <img src="https://images.vexels.com/media/users/3/136826/isolated/preview/4751bdd75f3a5d3616fc98a8cc4dfa4a-icono-de-carrito-de-compras.png" alt="Bootstrap" width="30" height="30">
-                        </a>
                     </div>
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </div>
             </nav>
         </header>
-        <div>
-            <asp:ContentPlaceHolder ID="Content" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-        <asp:ContentPlaceHolder ID="FooterPredeterminado" runat="server">
-            <footer class="bg-dark text-center text-bg-secondary fst-italic p-3">
-                <ul class="d-flex flex-rows justify-content-between p-0 m-0" style="list-style: none">
-                    <li class="fw-bolder text-start text-">Año 2023 </li>
-                    <li class="fst-italic text-center">Nicolas Rodriguez    Thomas Pufahl</li>
-                    <li class="fst-italic text-end">Programacion 3</li>
-                </ul>
-            </footer>
+        <asp:ContentPlaceHolder ID="Content" runat="server">
         </asp:ContentPlaceHolder>
+        <footer class="bg-dark text-center text-bg-secondary fst-italic p-3">
+            <ul class="d-flex flex-rows justify-content-between p-0 m-0" style="list-style: none">
+                <li class="fw-bolder text-start text-">Año 2023 </li>
+                <li class="fst-italic text-center">Nicolas Rodriguez    Thomas Pufahl</li>
+                <li class="fst-italic text-end">Programacion 3</li>
+            </ul>
+        </footer>
     </form>
 </body>
 </html>
