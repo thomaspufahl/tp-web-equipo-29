@@ -9,7 +9,7 @@
             <div class="d-flex flex-column gap-2 card py-4 px-3">
 
                 <div class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="buscar" placeholder="search" aria-label="search">
+                    <input class="form-control me-2" type="search" placeholder="buscar" aria-label="buscar">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </div>
 
@@ -29,7 +29,7 @@
                         </ul>
                     </div>
                     <div>
-                        <p>Categorias</p>
+                        <p>Categorías</p>
                         <ul class="d-flex flex-column gap-2 mt-1 ps-3" style="list-style: none;">
                             <asp:Repeater ID="CategoriasRepeater" runat="server">
                                 <ItemTemplate>
@@ -44,7 +44,7 @@
             </div>
         </aside>
         <section>
-            <h2 class="mb-4">Articulos</h2>
+            <h2 class="mb-4">Artículos</h2>
             <ul runat="server" id="listaArticulos" class="d-flex flex-wrap row-gap-5 m-0 p-0" style="place-content: space-between; list-style: none">
                 <asp:Repeater ID="ParentRepeater" runat="server">
                     <ItemTemplate>
