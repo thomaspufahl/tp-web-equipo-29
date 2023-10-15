@@ -9,9 +9,16 @@ namespace ArticulosAppWeb
 {
     public partial class Carrito1 : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                CarritoRepeater.DataSource = ((Site)Master).ObtenerSesion();
+                CarritoRepeater.DataBind();
+               
+            }
+            
         }
     }
 }

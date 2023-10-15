@@ -45,13 +45,15 @@
             <asp:ContentPlaceHolder ID="Content" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <footer class="bg-dark text-center text-bg-secondary fst-italic p-3">
-            <ul class="d-flex flex-rows justify-content-between p-0 m-0" style="list-style: none">
-                <li class="fw-bolder text-start text-">Año 2023 </li>
-                <li class="fst-italic text-center">Nicolas Rodriguez    Thomas Pufahl</li>
-                <li class="fst-italic text-end">Programacion 3</li>
-            </ul>
-        </footer>
+        <asp:ContentPlaceHolder ID="FooterPredeterminado" runat="server">
+            <footer class="bg-dark text-center text-bg-secondary fst-italic p-3">
+                <ul class="d-flex flex-rows justify-content-between p-0 m-0" style="list-style: none">
+                    <li class="fw-bolder text-start text-">Año 2023 </li>
+                    <li class="fst-italic text-center">Nicolas Rodriguez    Thomas Pufahl</li>
+                    <li class="fst-italic text-end">Programacion 3</li>
+                </ul>
+            </footer>
+        </asp:ContentPlaceHolder>
     </form>
 </body>
 </html>
