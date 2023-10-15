@@ -15,6 +15,33 @@ namespace ArticulosAppWeb
     {
 
         /// <summary>
+        /// MarcasRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater MarcasRepeater;
+
+        /// <summary>
+        /// CategoriasRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater CategoriasRepeater;
+
+        /// <summary>
+        /// listaArticulos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listaArticulos;
+
+        /// <summary>
         /// ParentRepeater control.
         /// </summary>
         /// <remarks>
