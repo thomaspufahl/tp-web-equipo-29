@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Producto.aspx.cs" Inherits="ArticulosAppWeb.Producto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <link href="StyleProductos.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <section>
-
         <div class="product-container">
             <div class="product-image">
                 <h2 id="NombreProducto" runat="server"></h2>
@@ -36,6 +36,5 @@
             </div>
         </div>
 
-        <link href="StyleProductos.css" rel="stylesheet" />
     </section>
 </asp:Content>
