@@ -51,7 +51,9 @@
                         <li>
                             <article class="card d-flex" style="max-width: 21rem">
                                 <header class="card-body text-wrap">
-                                    <img id="imagenArt" src="<%#Eval("Imagenes[0].UrlImagen")%>" alt="Alternate Text" onerror='javascript: this.src="https://cdn4.iconfinder.com/data/icons/ui-beast-3/32/ui-49-4096.png"' class="card-img-top" />
+                                    <div style="min-height: 302px" class="d-flex">
+                                        <img id="imagenArt" src="<%#Eval("Imagenes[0].UrlImagen")%>" alt="<%#Eval("Nombre")%>" onerror='javascript: this.src="https://cdn4.iconfinder.com/data/icons/ui-beast-3/32/ui-49-4096.png"' class="card-img" style="height: fit-content; align-self: center"/>
+                                    </div>
                                     <h5 class="card-title"><%#Eval("Nombre")%></h5>
                                     <p class="card-text"><%#Eval("Descripcion") %></p>
                                 </header>
