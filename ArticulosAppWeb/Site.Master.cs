@@ -5,10 +5,14 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web;
+using System.Web.Management;
 using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Net.WebRequestMethods;
 
 namespace ArticulosAppWeb
 {
@@ -32,11 +36,47 @@ namespace ArticulosAppWeb
             foreach (Articulo articulo in ListaArticulos)
             {
                 articulo.Imagenes = new List<Imagen>();
-                articulo.Imagenes = serviceImagen.GetAllByIdArticulo(articulo.Id);
+                List<Imagen> imagenes = serviceImagen.GetAllByIdArticulo(articulo.Id);
+                articulo.Imagenes = OrganizarImagenes(imagenes);
             }
 
             return ListaArticulos; 
         }
+
+        private bool esImagenValida(string url)
+        { 
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            //request.AllowAutoRedirect = false;
+
+            using (HttpClient client = new HttpClient())
+            {
+                var response = client.GetAsync(url).Result;
+
+                if (response.IsSuccessStatusCode) return true;
+
+                return false;
+            }
+        }
+
+        private List<Imagen> OrganizarImagenes(List<Imagen> imagenes)
+        {
+            List<Imagen> imagenesOrganizadas = new List<Imagen>();
+
+            foreach (Imagen imagen in imagenes)
+            {
+                if (esImagenValida(imagen.UrlImagen))
+                {
+                    imagenesOrganizadas.Insert(0, imagen);
+                }
+                else
+                {
+                    imagenesOrganizadas.Add(imagen);
+                }
+            }
+
+            return imagenesOrganizadas;
+        }
+
 
         public bool ExisteSesion()
         {
