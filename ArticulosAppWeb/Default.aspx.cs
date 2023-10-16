@@ -82,6 +82,8 @@ namespace ArticulosAppWeb
                     ParentRepeater.DataSource = ((Site)Page.Master).ObtenerListaArticulos().FindAll(a => a.Nombre.ToLower().Contains(value.ToLower()));
                     ParentRepeater.DataBind();
                 }
+
+                listaArticulos.Attributes["class"] = "d-flex flex-wrap row-gap-5 gap-5 m-0 p-0 place justify-content-evenly justify-content-xxl-between";
             }
         }
 
