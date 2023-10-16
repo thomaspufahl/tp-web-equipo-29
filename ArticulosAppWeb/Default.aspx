@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <main class="d-flex gap-5 px-5 py-4" style="background: #dcdcdc; place-content: right;">
+    <main class="d-flex flex-column flex-xxl-row gap-5 px-5 py-4" style="background: #dcdcdc; place-content: right;">
         <aside class="d-flex flex-column justify-content-start" style="width: 25rem">
             <h2 class="mb-4">Filtros</h2>
             <div class="d-flex flex-column gap-2 card py-4 px-3">
